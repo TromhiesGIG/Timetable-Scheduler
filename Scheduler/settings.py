@@ -1,5 +1,6 @@
 import os
-
+from pathlib import Path
+import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -12,7 +13,7 @@ SECRET_KEY = 'i%i@rtezqh8te3rz5*_7zac85=h5-dekhgl5ipggy)%&g)%9x-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-backend.onrender.com', '*']
 
 # Application definition
 
@@ -24,10 +25,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'SchedulerApp',
+    'corsheaders',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #added whitenoise
+    'corsheaders.middleware.CorsMiddleware', #added corsheaders
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -35,6 +40,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True  # Allow frontend to talk to backend
+
+
 
 ROOT_URLCONF = 'Scheduler.urls'
 
@@ -57,13 +65,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Scheduler.wsgi.application'
 
 
-# Database
-
+# Database Configuration for Render
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(default=f'sqlite:///{BASE_DIR / "db.sqlite3"}', conn_max_age=600)
 }
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
