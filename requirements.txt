@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 Django==3.2.20
+flask
+gunicorn
+pandas
+numpy
+=======
+Django==3.2.25
+>>>>>>> e2b1af67f31fadd58fb258ce3c28706a0d807b61
