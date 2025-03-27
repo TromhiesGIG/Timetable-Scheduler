@@ -117,7 +117,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 # Ensure Whitenoise can serve static files in production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # WHITENOISE_MANIFEST_STRICT = True
 # WHITENOISE_MANIFEST_STRICT = False
