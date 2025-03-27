@@ -280,7 +280,7 @@ def timetable(request):
         #     print(c.course.course_name, c.meeting_time)
         print(f'\n> Generation #{VARS["generationNum"]}, Fitness: {schedule.getFitness()}')
     room_data = [class_data.get_room() for class_data in schedule.getClasses()]
-    print(room_data)
+    # print(room_data)
     # print(schedule.getClasses())
 
     return render(
