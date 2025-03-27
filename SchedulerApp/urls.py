@@ -5,12 +5,9 @@ from django.urls import path
 from .views import *
 from django.conf import settings
 from django.conf.urls.static import static
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> origin/PROJECT
 
 urlpatterns = [
     path('', home, name='home'),
@@ -45,8 +42,4 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-<<<<<<< HEAD
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-=======
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
->>>>>>> origin/PROJECT
