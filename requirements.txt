@@ -3,3 +3,4 @@ flask
 gunicorn
 pandas
 numpy
+dj-database-url
