@@ -273,7 +273,7 @@ def timetable(request):
     geneticAlgorithm = GeneticAlgorithm()
     schedule = population.getSchedules()[0]
 
-    while (schedule.getFitness() != 1.0) and (VARS['generationNum'] < 100):
+    while (schedule.getFitness() != 1.0) and (VARS['generationNum'] < 3):
         if VARS['terminateGens']:
             return HttpResponse('')
 
