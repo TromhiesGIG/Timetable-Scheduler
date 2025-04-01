@@ -118,6 +118,16 @@ class Section(models.Model):
         section.save()
 
 
+
+class Timetable(models.Model):
+    subject = models.CharField(max_length=100)
+    day = models.CharField(max_length=50)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+
+    def __str__(self):
+        return f"{self.subject} on {self.day} from {self.start_time} to {self.end_time}"
+
 '''
 class Data(models.Manager):
     def __init__(self):
