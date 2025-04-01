@@ -23,7 +23,7 @@
       <tr>
         <th>{{week.0}}</th>
         {% for time in timeSlots %}
-        <td>{% sub schedule section.section_id week.0 time.0 %}
+        <td>{% sub schedule section.department.dept_name week.0 time.0 %}
         </td>
         {% endfor %}
       </tr>

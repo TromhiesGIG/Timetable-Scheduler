@@ -127,10 +127,12 @@ class Schedule:
         self._classes.append(newClass)
 
     def initialize(self):
+        # print("Initializing schedule...")
         sections = Section.objects.all()
         for section in sections:
             dept = section.department
             n = section.num_class_in_week
+            # print(f"Processing section {section.section_id} in department {dept.dept_name} with {n} classes per week")
 
             if n > len(data.get_meetingTimes()):
                 n = len(data.get_meetingTimes())
@@ -138,12 +140,16 @@ class Schedule:
             courses = dept.courses.all()
             for course in courses:
                 for i in range(n // len(courses)):
+                    # print(f"Adding course {course.course_name} to section {section.section_id}")
                     self.addCourse(data, course, courses, dept, section)
 
             for course in courses.order_by('?')[:(n % len(courses))]:
+                # print(f"Adding remaining course {course.course_name} to section {section.section_id}")
                 self.addCourse(data, course, courses, dept, section)
 
+        # print("Schedule initialized with", len(self._classes), "classes.")
         return self
+
 
     def calculateFitness(self):
         self._numberOfConflicts = 0

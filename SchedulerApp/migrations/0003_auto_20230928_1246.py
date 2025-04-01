@@ -18,6 +18,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='meetingtime',
             name='time',
-            field=models.CharField(choices=[('8:45 - 9:45', '8:45 - 9:45'), ('10:00 - 11:00', '10:00 - 11:00'), ('11:00 - 12:00', '11:00 - 12:00'), ('1:00 - 2:00', '1:00 - 2:00'), ('2:15 - 3:15', '2:15 - 3:15')], default='11:30 - 12:30', max_length=50),
+            field=models.CharField(choices=[('9:00 - 11:00'  , '9:00 - 11:00'),
+                                            ('11:00 - 1:00', '11:00 - 1:00'),
+                                            ('2:00 - 4:00', '2:00 - 4:00'),
+                                            ('4:00 - 6:00'  , '4:00 - 6:00'),],
+                                    default='11:30 - 12:30', max_length=50),
         ),
     ]
